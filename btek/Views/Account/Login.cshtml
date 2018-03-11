@@ -1,28 +1,38 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>sNOw More | Login</title>
-    <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-</head>
+﻿@using btek.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "sNOw More | Login";
+}
+
+
+<link rel="stylesheet" type="text/css" href="~/Content/Site.css">
 <body class="portal">
     <div class="loginWrapper">
-        <div class="header">
-            <h1>HELLO,</h1>
-            <p>CONTRACTOR</p>
+        <div class="col-md-8">
+            <div class="header">
+                <h1>HELLO,</h1>
+                <p>CONTRACTOR</p>
+            </div>
+            <section id="loginForm">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                 {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="fields">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="signIn">
+                        <input type="submit" value="Log in" class="signInButton" />
+                    </div>
+                    <div class="bottomLinks">
+                        <a class="leftLink" href="#">I'm a Client</a>
+                        <a class="rightLink "href="/Account/Register">Create New Account</a>
+                    </div>
+                 }
+            </section>
+           </div>
         </div>
-        <div class="fields">
-            <input type="text" name="username" placeholder="Username">
-            <input type="password" name="password" placeholder="Password">
-        </div>
-        <div class="signIn">
-            <button class="signInButton">Sign In</button>
-        </div>
-        <div class="bottomLinks">
-            <a class="leftLink" href="#">I'm a Client</a>
-            <a class="rightLink" href="#">Create New Account</a>
-        </div>
-    </div>
 </body>
-</html>

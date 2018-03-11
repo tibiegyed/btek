@@ -1,31 +1,44 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>sNOw More | Register</title>
-    <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-</head>
+﻿@model btek.Models.RegisterViewModel
+@{
+    ViewBag.Title = "sNOw More | Register";
+}
+
+<link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+
 <body class="portal">
     <div class="loginWrapper">
         <div class="header">
             <h1>CLIENT</h1>
             <p>REGISTRATION</p>
         </div>
+
         <div class="fields">
-            <input type="text" name="firstname" placeholder="First Name">
-            <input type="text" name="lastname" placeholder="Last Name">
-            <input type="text" name="email" placeholder="Email">
-            <input type="text" name="username" placeholder="Username">
-            <input type="password" name="password" placeholder="Password">
-        </div>
-        <div class="signIn">
-            <button class="signInButton">Register</button>
-        </div>
-        <div class="bottomLinks">
-            <a class="leftLink" href="#">I'm a Client</a>
-            <a class="rightLink" href="#">I'm a Contractor</a>
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+             {
+                @Html.AntiForgeryToken() 
+
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password" })
+
+              
+             }
+              <div class="signIn">
+                 <input type="submit" value="Register" class="signInButton" />
+              </div>
+               <div class="bottomLinks">
+                        <a class="leftLink" href="#">I'm a Client</a>
+                        <a class="rightLink "href="#">I'm a Contractor</a>
+               </div>
         </div>
     </div>
+
+   
 </body>
-</html>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
