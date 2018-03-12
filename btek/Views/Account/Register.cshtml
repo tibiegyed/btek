@@ -11,33 +11,26 @@
             <h1>CLIENT</h1>
             <p>REGISTRATION</p>
         </div>
-
-        <div class="fields">
+        <section id="registerForm">
             @using (Html.BeginForm("Register", "Account", FormMethod.Post))
-             {
-                @Html.AntiForgeryToken() 
-
+            {
+                @Html.AntiForgeryToken()
                 @Html.ValidationSummary("", new { @class = "text-danger" })
-
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
-
-                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
-
-                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password" })
-
-            <div class="signIn">
-                <input type="submit" value="Register" class="signInButton" />
-            </div>
-             }
-              
-               <div class="bottomLinks">
-                        <a class="leftLink" href="#">I'm a Client</a>
-                        <a class="rightLink "href="#">I'm a Contractor</a>
-               </div>
-        </div>
-    </div>
-
-   
+                <div class="fields">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password" })
+                </div>
+                <div class="signIn">
+                    <input type="submit" value="Register" class="signInButton" />
+                </div>
+                <div class="bottomLinks">
+                    <a class="leftLink" href="#">I'm a Client</a>
+                    <a class="rightLink " href="#">I'm a Contractor</a>
+                </div>
+            }
+        </section>
+       </div>
 </body>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
