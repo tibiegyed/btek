@@ -4,7 +4,6 @@
 }
 
 <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
-
 <body class="portal">
     <div class="loginWrapper">
         <div class="header">
@@ -16,17 +15,19 @@
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary("", new { @class = "text-danger" })
-                <div class="fields">
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
-                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
-                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password" })
-                </div>
+            <div class="fields">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password" })
+                @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+            </div>
                 <div class="signIn">
                     <input type="submit" value="Register" class="signInButton" />
                 </div>
                 <div class="bottomLinks">
-                    <a class="leftLink" href="#">I'm a Client</a>
-                    <a class="rightLink " href="#">I'm a Contractor</a>
+                    <a class="leftLink" href="/Account/Login">I'm already registered</a>
                 </div>
             }
         </section>
