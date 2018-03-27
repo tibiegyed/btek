@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace btek.Models
 {
@@ -12,5 +9,6 @@ namespace btek.Models
         public DateTime Date { get; set; }
         public string Description { get; set; }
         public double Price {get;set;}
+        public string Email { get; set; }
     }
 }

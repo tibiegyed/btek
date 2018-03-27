@@ -180,6 +180,18 @@ textarea {
     display: none;
 }
 
+.checkbox {
+    display: inline-flex;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.85rem;
+}
+
+#IsContractor{
+    width: 1rem;
+}
+
 @media screen and (max-width: 520px) {
     .header h1 {
         font-size: 1.5rem;
