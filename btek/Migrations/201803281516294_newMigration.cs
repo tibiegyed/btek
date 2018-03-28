@@ -3,7 +3,7 @@ namespace btek.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class migrate1 : DbMigration
+    public partial class newMigration : DbMigration
     {
         public override void Up()
         {
@@ -35,6 +35,7 @@ namespace btek.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        IsContractor = c.Boolean(nullable: false),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),

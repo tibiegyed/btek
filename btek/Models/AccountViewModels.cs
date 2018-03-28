@@ -62,6 +62,7 @@ namespace btek.Models
         public bool RememberMe { get; set; }
     }
 
+
     public class RegisterViewModel
     {
         [Required]
