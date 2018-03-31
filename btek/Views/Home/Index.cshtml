@@ -1,1 +1,15 @@
-﻿<h2>This is the homepage. It is under construction.</h2>
+﻿@model IEnumerable<btek.Models.AdPostModel>
+@{
+
+    ViewBag.Title = "Home Page";
+}
+
+<h2>This is the homepage. It is under construction.</h2>
+<ul>
+    @foreach (var ad in Model)
+    {
+        <li>
+            <div><p>@ad.ClientName</p></div>            
+        </li>
+    }
+</ul>

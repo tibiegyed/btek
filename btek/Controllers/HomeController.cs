@@ -1,16 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using btek.Models;
+using System;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace btek.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext _context;
+
+        public HomeController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
         public ActionResult Index()
         {
-            return View();
+            var upcomingGigs = _context.Ads
+                .Where(g => g.Date != DateTime.Now);
+
+            return View(upcomingGigs);
         }
 
         public ActionResult About()
@@ -26,5 +35,6 @@ namespace btek.Controllers
 
             return View();
         }
+
     }
 }
