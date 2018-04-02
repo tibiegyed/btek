@@ -200,6 +200,26 @@
     <Compile Include="Migrations\201803312053139_AddPost.Designer.cs">
       <DependentUpon>201803312053139_AddPost.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804021757459_m1.cs" />
+    <Compile Include="Migrations\201804021757459_m1.Designer.cs">
+      <DependentUpon>201804021757459_m1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804021807104_m11.cs" />
+    <Compile Include="Migrations\201804021807104_m11.Designer.cs">
+      <DependentUpon>201804021807104_m11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804021839577_m3.cs" />
+    <Compile Include="Migrations\201804021839577_m3.Designer.cs">
+      <DependentUpon>201804021839577_m3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804021842542_m4.cs" />
+    <Compile Include="Migrations\201804021842542_m4.Designer.cs">
+      <DependentUpon>201804021842542_m4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804021846466_m5.cs" />
+    <Compile Include="Migrations\201804021846466_m5.Designer.cs">
+      <DependentUpon>201804021846466_m5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdPostModel.cs" />
@@ -290,6 +310,21 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201803312053139_AddPost.resx">
       <DependentUpon>201803312053139_AddPost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804021757459_m1.resx">
+      <DependentUpon>201804021757459_m1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804021807104_m11.resx">
+      <DependentUpon>201804021807104_m11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804021839577_m3.resx">
+      <DependentUpon>201804021839577_m3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804021842542_m4.resx">
+      <DependentUpon>201804021842542_m4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804021846466_m5.resx">
+      <DependentUpon>201804021846466_m5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
