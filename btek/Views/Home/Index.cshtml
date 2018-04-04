@@ -1,4 +1,6 @@
-﻿@using WebMatrix.Data
+﻿@model IEnumerable<btek.Models.AdPostModel>
+
+@using WebMatrix.Data
 @{
     var email = "";
     if (Request.Cookies["EmailCookie"] != null)
@@ -10,4 +12,14 @@
     var result = db.QuerySingle(query)[0];
 
 }
+
 <h2>This is the homepage. It is under construction. @result</h2>
+
+<ul>
+    @foreach (var ad in Model)
+    {
+        <li>
+            <div><p>@ad.ClientName</p></div>
+        </li>
+    }
+</ul>
