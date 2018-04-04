@@ -1,1 +1,13 @@
-﻿<h2>This is the homepage. It is under construction.</h2>
+﻿@using WebMatrix.Data
+@{
+    var email = "";
+    if (Request.Cookies["EmailCookie"] != null)
+    {
+        email = Request.Cookies["EmailCookie"].Value;
+    }
+    var db = Database.Open("DefaultConnection");
+    var query = "SELECT IsContractor FROM AspNetUsers WHERE Email = '" + email + "'";
+    var result = db.QuerySingle(query)[0];
+
+}
+<h2>This is the homepage. It is under construction. @result</h2>
