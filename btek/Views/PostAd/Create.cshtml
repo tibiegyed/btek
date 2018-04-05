@@ -1,42 +1,51 @@
 ﻿@model btek.ViewModel.AdPostViewModel
-
 @{
     ViewBag.Title = "Post Ad";
+    var email = "";
+    if (Request.Cookies["EmailCookie"] != null)
+    {
+        email = Request.Cookies["EmailCookie"].Value;
+    }
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
-
-<h2>Add a Gig</h2>
-@using (Html.BeginForm("Create", "PostAd"))
-{
-    <p class="alert alert-info">All fields are <strong>required</strong>.</p>
-    @Html.AntiForgeryToken()
-    <div class="form-group">
-        @Html.LabelFor(m => m.ClientName)
-        @Html.TextBoxFor(m => m.ClientName, new { @class = "form-control", autofocus = "autofocus" })
-        @Html.ValidationMessageFor(m => m.ClientName)
+<link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+<body class="portal">
+    <div class="loginWrapper">
+        <div class="col-md-8">
+            <div class="header">
+                <h1>AD</h1>
+                <p>POSTING</p>
+            </div>
+            <section class="fields">
+                @using (Html.BeginForm("Create", "PostAd"))
+    {
+            <p class="alert alert-info">All fields are <strong>required</strong>.</p>
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.ClientName, new { @class = "form-control", autofocus = "autofocus", @placeholder = "Client Name" })
+                @Html.ValidationMessageFor(m => m.ClientName)
+            </div>
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.Address, new { @class = "form-control", autofocus = "autofocus", @placeholder = "Address" })
+                @Html.ValidationMessageFor(m => m.Address)
+            </div>
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.Description, new { @class = "form-control", autofocus = "autofocus", @placeholder = "Description" })
+                @Html.ValidationMessageFor(m => m.Description)
+            </div>
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.Price, new { @class = "form-control", autofocus = "autofocus", @placeholder = "Price", @Value = "" })
+                @Html.ValidationMessageFor(m => m.Price)
+            </div>
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", autofocus = "autofocus", @Value = email, @readonly = "readonly" })
+                @Html.ValidationMessageFor(m => m.Email)
+            </div>
+            <div class="submitBtn">
+                <button type="submit" class="button">Save</button>
+                </div>
+                }
+            </section>
+        </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Address)
-        @Html.TextBoxFor(m => m.Address, new { @class = "form-control", autofocus = "autofocus" })
-        @Html.ValidationMessageFor(m => m.Address)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Description)
-        @Html.TextBoxFor(m => m.Description, new { @class = "form-control", autofocus = "autofocus" })
-        @Html.ValidationMessageFor(m => m.Description)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Price)
-        @Html.TextBoxFor(m => m.Price, new { @class = "form-control", autofocus = "autofocus" })
-        @Html.ValidationMessageFor(m => m.Price)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email)
-        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", autofocus = "autofocus" })
-        @Html.ValidationMessageFor(m => m.Email)
-    </div>
-    <button type="submit" class="btn btn-primary">Save</button>
-}
+</body>

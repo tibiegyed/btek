@@ -8,18 +8,45 @@
         email = Request.Cookies["EmailCookie"].Value;
     }
     var db = Database.Open("DefaultConnection");
-    var query = "SELECT IsContractor FROM AspNetUsers WHERE Email = '" + email + "'";
-    var result = db.QuerySingle(query)[0];
-
+    var conQuery = "SELECT IsContractor FROM AspNetUsers WHERE Email = '" + email + "'";
+    var result = db.QuerySingle(conQuery)[0];
 }
 
-<h2>This is the homepage. It is under construction. @result</h2>
-
-<ul>
-    @foreach (var ad in Model)
+<link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+<body class="portal">
+    <div class="loginWrapper">
+        <div class="col-md-8">
+            <div class="header" style="margin-top: 3rem;">
+                <h1>HELLO,</h1>
+                <p style="font-size: 6vw;">@email</p>
+            </div>
+            @if (result == false)
     {
-        <li>
-            <div><p>@ad.ClientName</p></div>
-        </li>
-    }
-</ul>
+        <p class="postingsHeader">Your Postings</p>
+        <section style="overflow:auto; height: 50vh;">
+
+            @foreach (var ad in Model)
+    {
+        if (ad.Email == email)
+        {
+            <div class="posting">
+                <p class="postTitle">@ad.Description</p>
+                <div class="adBottom">
+                    <p class="postId">Post ID: @ad.AdId</p>
+                    <p class="postDate">Post Date: @ad.Date</p>
+                </div>
+                <div class="buttons">
+                    <input type="submit" value="Edit" class="button" />
+                    <input type="submit" value="Delete" class="button" />
+                </div>
+            </div>
+}
+}
+        </section>
+        <div class="submitBtn">
+            <input type="button" value="Post New Ad" class="button" onclick="location.href='/PostAd/Create'" />
+        </div>
+}
+        </div>
+    </div>
+</body>

@@ -29,7 +29,6 @@ textarea {
     height: 100vh;
     display: block;
     position: relative;
-    overflow: hidden;
 }
 
     .portal::after {
@@ -83,6 +82,7 @@ textarea {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: 'Roboto', sans-serif;
 }
 
 .signIn{
@@ -97,6 +97,48 @@ textarea {
     transform: translateY(-30%);
     top: 30%;
     position: relative;
+}
+
+.posting {
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 4px;
+    padding: 0.75rem;
+    margin: 1rem;
+}
+
+.postingsHeader {
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    margin-top: 2rem;
+    margin-left: 1rem;
+    font-size: 1.25rem;
+    color: rgba(0,0,0,0.6);
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.postTitle {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.postId {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.postDate {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+.adBottom {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -115,7 +157,7 @@ textarea {
     color: rgba(255,255,255,0.5);
 }
 
-.signInButton {
+.button {
     background-color: #5B8B93;
     border: none;
     color: rgba(255,255,255,0.8);
@@ -129,13 +171,22 @@ textarea {
     box-shadow: 0 3px rgba(0,0,0,0.2);
 }
 
-    .signInButton:hover {
+    .button:hover {
         box-shadow: 0 3px rgba(0,0,0,0.8);
         color: white;
         background-color: #246078;
         transition: ease-in 0.5s;
         cursor: pointer;
     }
+
+.buttons {
+    display: block;
+}
+
+.submitBtn{
+    margin: 1rem;
+    text-align: center;
+}
 
 .rightLink {
     position: relative;
@@ -195,6 +246,7 @@ textarea {
 @media screen and (max-width: 520px) {
     .header h1 {
         font-size: 1.5rem;
+        margin-bottom: 0.5rem;
     }
     .header p {
         font-size: 2.5rem;
