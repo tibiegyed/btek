@@ -21,32 +21,52 @@
                 <p style="font-size: 6vw;">@email</p>
             </div>
             @if (result == false)
-    {
-        <p class="postingsHeader">Your Postings</p>
-        <section style="overflow:auto; height: 50vh;">
+            {
+                <p class="postingsHeader">Your Postings</p>
+                <section style="overflow:auto; height: 50vh;">
 
-            @foreach (var ad in Model)
-    {
-        if (ad.Email == email)
-        {
-            <div class="posting">
-                <p class="postTitle">@ad.Description</p>
-                <div class="adBottom">
-                    <p class="postId">Post ID: @ad.AdId</p>
-                    <p class="postDate">Post Date: @ad.Date</p>
+                    @foreach (var ad in Model)
+                    {
+                        if (ad.Email == email)
+                        {
+                            <div class="posting">
+                                <p class="postTitle">@ad.Description</p>
+                                <div class="adBottom">
+                                    <p class="postId">Post ID: @ad.AdId</p>
+                                    <p class="postDate">Post Date: @ad.Date</p>
+                                </div>
+                                <div class="buttons">
+                                    <input type="submit" value="Edit" class="button" />
+                                    <input type="submit" value="Delete" class="button" />
+                                </div>
+                            </div>
+                        }
+                    }
+                </section>
+                <div class="submitBtn">
+                    <input type="button" value="Post New Ad" class="button" onclick="location.href='/PostAd/Create'" />
                 </div>
-                <div class="buttons">
-                    <input type="submit" value="Edit" class="button" />
-                    <input type="submit" value="Delete" class="button" />
-                </div>
-            </div>
-}
-}
-        </section>
-        <div class="submitBtn">
-            <input type="button" value="Post New Ad" class="button" onclick="location.href='/PostAd/Create'" />
-        </div>
-}
+            }
+            else
+            {
+                <p class="postingsHeader">Viewing Postings</p>
+                <section style="overflow:auto; height: 50vh;">
+
+                    @foreach (var ad in Model)
+                    {
+                        <div class="posting">
+                            <p class="postTitle">@ad.Description</p>
+                            <div class="adBottom">
+                                <p class="postId">Price: $@ad.Price</p>
+                                <p class="postDate">Post Date: @ad.Date.ToShortDateString()</p>
+                            </div>
+                            <div class="buttons">
+                                <input type="submit" value="Contact" class="button" onclick="window.location='mailto:@ad.Email'" />
+                            </div>
+                        </div>
+                    }
+                </section>
+            }
         </div>
     </div>
 </body>
