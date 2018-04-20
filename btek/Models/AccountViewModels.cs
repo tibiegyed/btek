@@ -82,6 +82,7 @@ namespace btek.Models
         public string ConfirmPassword { get; set; }
 
         public bool IsContractor { get; set; }
+        public string Address { get; set; }
     }
 
     public class ResetPasswordViewModel

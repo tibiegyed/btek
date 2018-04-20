@@ -3,12 +3,13 @@
 @using WebMatrix.Data
 @{
     var email = "";
+    var User = System.Web.HttpContext.Current.User;
     if (Request.Cookies["EmailCookie"] != null)
     {
         email = Request.Cookies["EmailCookie"].Value;
     }
     var db = Database.Open("DefaultConnection");
-    var conQuery = "SELECT IsContractor FROM AspNetUsers WHERE Email = '" + email + "'";
+    var conQuery = "SELECT IsContractor FROM AspNetUsers WHERE Email = '" + User.Identity.Name + "'";
     var result = db.QuerySingle(conQuery)[0];
 }
 
@@ -20,26 +21,28 @@
                 <h1>HELLO,</h1>
                 <p style="font-size: 6vw;">@email</p>
             </div>
-            @if (result == false)
+            @if (result == false || result == null)
             {
                 <p class="postingsHeader">Your Postings</p>
                 <section style="overflow:auto; height: 50vh;">
-
-                    @foreach (var ad in Model)
+                    @if (Model != null)
                     {
-                        if (ad.Email == email)
+                        foreach (var ad in Model)
                         {
-                            <div class="posting">
-                                <p class="postTitle">@ad.Description</p>
-                                <div class="adBottom">
-                                    <p class="postId">Post ID: @ad.AdId</p>
-                                    <p class="postDate">Post Date: @ad.Date</p>
+                            if (ad.Email == email)
+                            {
+                                <div class="posting">
+                                    <p class="postTitle">@ad.Description</p>
+                                    <div class="adBottom">
+                                        <p class="postId">Post ID: @ad.AdId</p>
+                                        <p class="postDate">Post Date: @ad.Date</p>
+                                    </div>
+                                    <div class="buttons">
+                                        <input type="submit" value="Edit" class="button" />
+                                        <input type="submit" value="Delete" class="button" />
+                                    </div>
                                 </div>
-                                <div class="buttons">
-                                    <input type="submit" value="Edit" class="button" />
-                                    <input type="submit" value="Delete" class="button" />
-                                </div>
-                            </div>
+                            }
                         }
                     }
                 </section>

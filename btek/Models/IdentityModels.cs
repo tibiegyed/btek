@@ -10,6 +10,7 @@ namespace btek.Models
     public class ApplicationUser : IdentityUser
     {
         public bool IsContractor { get; internal set; }
+        public string Address { get; internal set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
