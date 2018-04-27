@@ -61,16 +61,19 @@
 
                     @foreach (var ad in Model)
                     {
-                        <div class="posting">
-                            <p class="postTitle">@ad.Description</p>
-                            <div class="adBottom">
-                                <p class="postId">Price: $@ad.Price</p>
-                                <p class="postDate">Post Date: @ad.Date.ToShortDateString()</p>
+                        if (ad.Date > DateTime.Now.AddDays(-30))
+                        {
+                            <div class="posting">
+                                <p class="postTitle">@ad.Description</p>
+                                <div class="adBottom">
+                                    <p class="postId">Price: $@ad.Price</p>
+                                    <p class="postDate">Post Date: @ad.Date.ToShortDateString()</p>
+                                </div>
+                                <div class="buttons">
+                                    <input type="submit" value="Contact" class="button" onclick="window.location='mailto:@ad.Email'" />
+                                </div>
                             </div>
-                            <div class="buttons">
-                                <input type="submit" value="Contact" class="button" onclick="window.location='mailto:@ad.Email'" />
-                            </div>
-                        </div>
+                        }
                     }
                 </section>
             }
