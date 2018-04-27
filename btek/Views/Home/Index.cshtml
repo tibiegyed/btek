@@ -12,7 +12,9 @@
     var conQuery = "SELECT IsContractor FROM AspNetUsers WHERE Email = '" + User.Identity.Name + "'";
     var result = db.QuerySingle(conQuery)[0];
 }
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
 <body class="portal">
     <div class="loginWrapper">
@@ -38,14 +40,16 @@
                                         <p class="postDate">Post Date: @ad.Date</p>
                                     </div>
                                     <div class="buttons">
-                                        <input type="submit" value="Edit" class="button" />
+                                        <input type="submit" value="Edit" class="button" data-toggle="modal" data-target="#editModal" />
                                         <input type="submit" value="Delete" class="button" />
                                     </div>
                                 </div>
+
                             }
                         }
                     }
                 </section>
+
                 <div class="submitBtn">
                     <input type="button" value="Post New Ad" class="button" onclick="location.href='/PostAd/Create'" />
                 </div>
@@ -70,6 +74,26 @@
                     }
                 </section>
             }
+        </div>
+    </div>
+
+    <div id="editModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Edit Post</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Here is where you edit the ad</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
         </div>
     </div>
 </body>
